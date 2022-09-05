@@ -16,8 +16,7 @@ In this lab you will develop an IoC framework. Your framework cannot have Spring
 	
 
 ## Submission
-
-* Create a postman collection that includes sample requests for all of your endpoints.
+---
 * Fork the repository and push your changes.
 * Once you finished your project, send a Pull Request. (Send only one Pull Request once you finish the assignment.)
 
