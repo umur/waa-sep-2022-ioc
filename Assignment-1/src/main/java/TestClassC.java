@@ -1,0 +1,2 @@
+public class TestClassC {
+}
