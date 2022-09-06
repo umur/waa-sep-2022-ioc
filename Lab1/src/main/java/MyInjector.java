@@ -18,14 +18,14 @@ public class MyInjector {
         beanBuild.setUrls(ClasspathHelper.forPackage("."));
 
         Reflections beansReflect = new Reflections(beanBuild);
-        Set<Class<?>> classes = beansReflect.getTypesAnnotatedWith(MyBean.class);
-        for (Class<?> c: classes) {
+        Set<Class<?>> AllClasses = beansReflect.getTypesAnnotatedWith(MyBean.class);
+        for (Class<?> c: AllClasses) {
             Object object = getFromMap(c, c.getDeclaredConstructor().newInstance());
             putIntoMap(c, object);
 
-            Field[] fields = c.getDeclaredFields();
+            Field[] AllFields = c.getDeclaredFields();
 
-            for (Field field: fields) {
+            for (Field field: AllFields) {
                 if (field.getDeclaredAnnotationsByType(MyAutowired.class).length > 0) {
                     Class<?> fieldClass = field.getType();
                     Object fieldObject = getFromMap(fieldClass, fieldClass.getDeclaredConstructor().newInstance());
