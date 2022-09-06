@@ -5,8 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-
-@Target({ElementType.TYPE, ElementType.CONSTRUCTOR}) // for class
+@Target({ElementType.FIELD}) // for field
 @Retention(RetentionPolicy.RUNTIME)
-public @interface MyBean {
+public @interface MyAutowired {
 }
