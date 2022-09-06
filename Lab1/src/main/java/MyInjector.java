@@ -37,12 +37,12 @@ public class MyInjector {
     }
 
 
-    private Object getFromMap(Class<?> klass, Object defaultValue) {
-        return mapsData.getOrDefault(klass.getSimpleName(), defaultValue);
+    private Object getFromMap(Class<?> clazz, Object defaultValue) {
+        return mapsData.getOrDefault(clazz.getSimpleName(), defaultValue);
     }
 
-    private void putIntoMap(Class<?> klass, Object object) {
-        mapsData.put(klass.getSimpleName(), object);
+    private void putIntoMap(Class<?> clazz, Object object) {
+        mapsData.put(clazz.getSimpleName(), object);
     }
 
     public <T> T getBeans(Class<T> clazz) throws BeanNotFoundException {
