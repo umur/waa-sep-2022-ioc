@@ -14,7 +14,7 @@ public class ClassFinder {
             = "Unable to get resources from path '%s'. Are you sure the package '%s' exists?";
 
     public static void main(String[] args) {
-        var classes = find("edu.miu.lab1");
+        var classes = find("edu.miu.lab1.advanced");
         classes.forEach(cl -> System.out.println(cl.getName()));
     }
 
