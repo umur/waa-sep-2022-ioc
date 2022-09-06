@@ -8,17 +8,17 @@ import java.util.*;
 
 public class MyInjector {
 
-    private Map<String, Object> maps = new HashMap<>();
+    private Map<String, Object> mapsData = new HashMap<>();
     MyInjector() throws Exception {
-        inject();
+        injectStart();
     }
-    private void inject() throws Exception {
-        ConfigurationBuilder beansBuilder = new ConfigurationBuilder();
-        beansBuilder.setScanners(Scanners.TypesAnnotated);
-        beansBuilder.setUrls(ClasspathHelper.forPackage("."));
+    private void injectStart() throws Exception {
+        ConfigurationBuilder beanBuild = new ConfigurationBuilder();
+        beanBuild.setScanners(Scanners.TypesAnnotated);
+        beanBuild.setUrls(ClasspathHelper.forPackage("."));
 
-        Reflections beansReflections = new Reflections(beansBuilder);
-        Set<Class<?>> classes = beansReflections.getTypesAnnotatedWith(MyBean.class);
+        Reflections beansReflect = new Reflections(beanBuild);
+        Set<Class<?>> classes = beansReflect.getTypesAnnotatedWith(MyBean.class);
         for (Class<?> c: classes) {
             Object object = getFromMap(c, c.getDeclaredConstructor().newInstance());
             putIntoMap(c, object);
@@ -38,11 +38,11 @@ public class MyInjector {
 
 
     private Object getFromMap(Class<?> klass, Object defaultValue) {
-        return maps.getOrDefault(klass.getSimpleName(), defaultValue);
+        return mapsData.getOrDefault(klass.getSimpleName(), defaultValue);
     }
 
     private void putIntoMap(Class<?> klass, Object object) {
-        maps.put(klass.getSimpleName(), object);
+        mapsData.put(klass.getSimpleName(), object);
     }
 
     public <T> T getBeans(Class<T> klass) throws BeanNotFoundException {
