@@ -45,8 +45,8 @@ public class MyInjector {
         mapsData.put(klass.getSimpleName(), object);
     }
 
-    public <T> T getBeans(Class<T> klass) throws BeanNotFoundException {
-        T o = (T)getFromMap(klass, null);
+    public <T> T getBeans(Class<T> clazz) throws BeanNotFoundException {
+        T o = (T)getFromMap(clazz, null);
         if (o == null) {
             throw new BeanNotFoundException();
         }
