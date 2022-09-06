@@ -1,0 +1,3 @@
+@MyBean
+public class AddressController {
+}
