@@ -1,5 +1,7 @@
 package miu.edu.course.service;
 
+import miu.edu.course.dto.CourseDTO;
+import miu.edu.course.dto.StudentDTO;
 import miu.edu.course.entity.Course;
 import miu.edu.course.entity.Student;
 
@@ -8,14 +10,12 @@ import java.util.Optional;
 
 public interface StudentService {
 
-    List<Student> getStudents();
-    Student save(Student student);
-    Student update();
-    Student delete();
+    List<StudentDTO> getStudents();
+    StudentDTO save(StudentDTO student);
 
-    Optional<Student> getStudent(Long id);
+    Optional<StudentDTO> getStudent(Long id);
 
-    Student UpdateStudent(Long id, Student student);
+    StudentDTO UpdateStudent(Long id, StudentDTO student);
 
     List<Student> getStudentByMajor(String major);
 

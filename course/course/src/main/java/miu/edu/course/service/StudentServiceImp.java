@@ -1,47 +1,55 @@
 package miu.edu.course.service;
 
+import miu.edu.course.dto.CourseDTO;
+import miu.edu.course.dto.StudentDTO;
 import miu.edu.course.entity.Course;
 import miu.edu.course.entity.Student;
 import miu.edu.course.repo.StudentRepo;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentServiceImp implements StudentService{
     @Autowired
     StudentRepo studentRepo;
+    @Autowired
+    ModelMapper modelMapper;
     @Override
-    public List<Student> getStudents() {
-        return studentRepo.getStudent();
+    public List<StudentDTO> getStudents() {
+        List<Student> studentList = studentRepo.getStudent();
+        return studentList.stream()
+                .map(student -> new StudentDTO(student.getId(),student.getFirstName(),student.getLastName(),student.getEmail(),
+                student.getMajor(),student.getGpa(),student.getCoursesTaken()))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Student save(Student student) {
-        return studentRepo.saveStudent(student);
+    public StudentDTO save(StudentDTO studentDTO) {
+        var studentDtoToStudent = modelMapper.map(studentDTO, Student.class);
+         studentRepo.saveStudent(studentDtoToStudent);
+         return studentDTO;
     }
 
-    @Override
-    public Student update() {
-        return null;
-    }
 
     @Override
-    public Student delete() {
-        return null;
-    }
+    public Optional<StudentDTO> getStudent(Long id) {
+        var student = studentRepo.findStudentById(id);
+        var convertToStudentDTO = modelMapper.map(student, StudentDTO.class);
 
-    @Override
-    public Optional<Student> getStudent(Long id) {
-       return studentRepo.findStudentById(id);
+        return Optional.ofNullable(convertToStudentDTO);
 
     }
 
     @Override
-    public Student UpdateStudent(Long id, Student student) {
-        return studentRepo.updateStudent(id, student);
+    public StudentDTO UpdateStudent(Long id, StudentDTO studentDTO) {
+        var convertDtoToStudent = modelMapper.map(studentDTO, Student.class);
+         studentRepo.updateStudent(id, convertDtoToStudent);
+        return studentDTO;
     }
 
     @Override

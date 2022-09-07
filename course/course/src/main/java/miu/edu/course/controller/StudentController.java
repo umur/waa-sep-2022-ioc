@@ -2,6 +2,8 @@ package miu.edu.course.controller;
 
 
 
+import miu.edu.course.dto.CourseDTO;
+import miu.edu.course.dto.StudentDTO;
 import miu.edu.course.entity.Course;
 import miu.edu.course.entity.Student;
 import miu.edu.course.service.StudentService;
@@ -18,22 +20,22 @@ public class StudentController {
     StudentService studentService;
 
     @GetMapping
-    List<Student> listOfStudent(){
+    List<StudentDTO> listOfStudent(){
         return studentService.getStudents();
     }
 
     @GetMapping("/{id}")
-    Optional<Student> getOneStudent(@PathVariable Long id){
+    Optional<StudentDTO> getOneStudent(@PathVariable Long id){
         return studentService.getStudent(id);
     }
 
     @PostMapping
-    Student saveStudent(@RequestBody Student student){
+    StudentDTO saveStudent(@RequestBody StudentDTO student){
        return studentService.save(student);
     }
 
-    @PutMapping
-    Student updateStudent(@PathVariable Long id, @RequestBody Student student){
+    @PutMapping("/{id}")
+    StudentDTO updateStudent(@PathVariable Long id, @RequestBody StudentDTO student){
         return studentService.UpdateStudent(id, student);
     }
 
@@ -46,8 +48,5 @@ public class StudentController {
     List<Course> getCoursesByStudentId(@PathVariable Long studentId){
         return studentService.getCoursesByStudentId(studentId);
     }
-
-
-
 
 }

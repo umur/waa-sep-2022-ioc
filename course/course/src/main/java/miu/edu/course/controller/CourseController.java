@@ -1,7 +1,9 @@
 package miu.edu.course.controller;
 
+import miu.edu.course.dto.CourseDTO;
 import miu.edu.course.entity.Course;
 import miu.edu.course.service.CourseService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,29 +16,28 @@ public class CourseController {
     @Autowired
     CourseService courseService;
 
-
     @GetMapping
-    List<Course> listOfCourse(){
+    List<CourseDTO> listOfCourse(){
         return courseService.getCourses();
     }
 
     @GetMapping("/{id}")
-    Optional<Course> getOneCourse(@PathVariable Long id){
+    Optional<CourseDTO> getOneCourse(@PathVariable Long id){
         return courseService.getCourse(id);
     }
 
     @PostMapping
-    Course saveCourse(@RequestBody Course course){
+    CourseDTO saveCourse(@RequestBody CourseDTO course){
         return courseService.saveCourse(course);
     }
 
     @PutMapping("/{id}")
-    Course UpdateCourse(@PathVariable Long id, @RequestBody Course course){
+    CourseDTO UpdateCourse(@PathVariable Long id, @RequestBody CourseDTO course){
         return courseService.updateCourse(id,course);
     }
 
     @DeleteMapping("/{id}")
-    Optional<Course> deleteCourse(@PathVariable Long id){
+    Optional<CourseDTO> deleteCourse(@PathVariable Long id){
         return courseService.deleteCourse(id);
     }
 }
