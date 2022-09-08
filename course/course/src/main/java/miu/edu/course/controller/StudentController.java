@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/students")
 public class StudentController {
@@ -47,6 +48,11 @@ public class StudentController {
     @GetMapping("/{studentId}/courses")
     List<Course> getCoursesByStudentId(@PathVariable Long studentId){
         return studentService.getCoursesByStudentId(studentId);
+    }
+
+    @DeleteMapping("/{id}")
+    Optional<Student> deleteCourse(@PathVariable Long id){
+        return studentService.deleteStudent(id);
     }
 
 }

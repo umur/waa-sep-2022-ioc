@@ -64,4 +64,12 @@ public class StudentRepo {
                 .collect(Collectors.toList());
 
     }
+
+    public Optional<Student> deleteStudent(Long id) {
+        Optional<Student> student = findStudentById(id);
+        int index =  students.indexOf(student.get());
+        students.remove(index);
+        return student;
+    }
+
 }

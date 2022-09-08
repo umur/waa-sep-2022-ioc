@@ -20,4 +20,6 @@ public interface StudentService {
     List<Student> getStudentByMajor(String major);
 
     List<Course> getCoursesByStudentId(Long studentId);
+
+    Optional<Student> deleteStudent(Long id);
 }

@@ -61,4 +61,9 @@ public class StudentServiceImp implements StudentService{
     public List<Course> getCoursesByStudentId(Long studentId) {
         return studentRepo.getCoursesByStudentId(studentId);
     }
+
+    @Override
+    public Optional<Student> deleteStudent(Long id) {
+        return studentRepo.deleteStudent(id);
+    }
 }
