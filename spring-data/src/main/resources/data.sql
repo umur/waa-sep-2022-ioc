@@ -1,0 +1,12 @@
+insert into address(id, city,street,zip) values(1,'Fairfield','1000N',52557);
+insert into address(id, city,street,zip) values(3,'IOWA','1000M',52556);
+insert into address(id, city,street,zip)  values(2,'Chicago','900M',50323);
+insert into address(id, city,street,zip)  values(4,'Illinois','100P',52552);
+insert into address(id, city,street,zip)  values(5,'Pella','100P',52512);
+insert into address(id, city,street,zip)  values(6,'Kabul','1092',92512);
+insert into users(id,email,name,lastname,password,address_id) values (1,'hamida@gmail.com','Hamida','Maqsoudi','Admin',2);
+insert into users(id,email,name,lastname,password,address_id) values (2,'Mekdes@gmail.com','Mekdes','Tebabue','1234',3);
+insert into users(id,email,name,lastname,password,address_id) values (3,'Hiwot@gmail.com','Hiwot','Reta','Admin@123',4);
+insert into users(id,email,name,lastname,password,address_id) values (4,'Ali@gmail.com','Ali','Jafari','Admin!24',5);
+insert into users(id,email,name,lastname,password,address_id) values (5,'Jamila@gmail.com','Jamila','Maqi','Admin123',1);
+select * from users;
