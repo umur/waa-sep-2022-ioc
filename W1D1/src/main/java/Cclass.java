@@ -1,0 +1,3 @@
+@MyBeans
+public class Cclass {
+}
